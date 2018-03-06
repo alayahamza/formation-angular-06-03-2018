@@ -1,26 +1,26 @@
-<table *ngIf="book$ | async as book; else loading">
-  <tbody>
+<ng-container  *ngIf="bookPosition$ |async as bookPos; else loading">
+<app-book-navigator [position]="bookPos"></app-book-navigator>
+<table>
+  <tbody *ngIf="bookPos.book as book">
   <tr>
     <th>Couverture</th>
-    <td>
-      <img [src]="book.image">
-    </td>
+    <td><img [src]="book.image"> </td>
   </tr>
   <tr>
     <th>Titre</th>
-    <td>{{book.title | uppercase}}</td>
+    <td>{{book.title }}</td>
   </tr>
   <tr>
     <th>Auteur</th>
-    <td>{{book.author}}</td>
+    <td>{{book.author }}</td>
   </tr>
   <tr>
     <th>Prix</th>
-    <td>{{book.price}}</td>
+    <td>{{book.price | currency: 'EUR' }}</td>
   </tr>
   <tr>
     <th>Note</th>
-    <td>{{book.rating |textRating}}</td>
+    <td>{{book.rating | textRating}}</td>
   </tr>
   <tr>
     <th>Pages</th>
@@ -32,6 +32,8 @@
   </tr>
   </tbody>
 </table>
+</ng-container>
+
 <ng-template #loading>
   <app-loading></app-loading>
 </ng-template>

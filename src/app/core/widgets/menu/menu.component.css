@@ -5,7 +5,6 @@ a {
   margin: 5px;
   padding: 5px;
 }
-
 a.active-link {
   color: darkred;
   border-bottom: 2px solid darkred;

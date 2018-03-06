@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'textRating'
@@ -6,7 +6,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class TextRatingPipe implements PipeTransform {
 
   transform(value: number): string {
-    return '★★★★★'.substring(0, value) + '☆☆☆☆☆'.substring(value, 5);
+    return '★★★★★     '.substring(0, value)
+      + '☆☆☆☆☆ '.substring(value, 5);
   }
 
 }

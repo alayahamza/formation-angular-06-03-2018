@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CatalogService } from './catalog.service';
+import {NgModule} from '@angular/core';
+import {CatalogService} from './catalog.service';
 import {HttpClientModule} from '@angular/common/http';
+import { UrlService } from './url.service';
 
 @NgModule({
   imports: [
     HttpClientModule
   ],
-  providers: [
-    CatalogService,
-  ]
+  declarations: [],
+  providers: [CatalogService, UrlService]
 })
 export class ServicesModule { }
