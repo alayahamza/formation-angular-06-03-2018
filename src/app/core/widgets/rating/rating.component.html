@@ -1,0 +1,10 @@
+<span (mouseleave)="leave()">
+  <span *ngFor="let full of stars; index as i"
+        (click)="changeRating(i)"
+        (mouseenter)="enter(i)"
+  ><span *ngIf="full">★</span
+  ><span *ngIf="!full">☆</span
+  ></span>
+</span>
+
+{{logRefresh()}}

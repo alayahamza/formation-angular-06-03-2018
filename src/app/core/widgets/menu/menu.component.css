@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+  color: grey;
+  border-bottom: 1px solid grey;
+  margin: 5px;
+  padding: 5px;
+}
+
+a.active-link {
+  color: darkred;
+  border-bottom: 2px solid darkred;
+}

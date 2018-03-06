@@ -1,0 +1,27 @@
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Titre</th>
+    <th>Auteur</th>
+    <th>Prix</th>
+    <th>Note</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of catalog$ |async">
+    <td>
+      <a [routerLink]="['/catalog/book', book._id.$oid]">
+        <img [src]="book.image">
+      </a>
+    </td>
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td class="right">{{book.price |currency:'EUR'}}</td>
+    <td>
+      <app-rating [(value)]="book.rating"></app-rating>
+      <input type="number" [(ngModel)]="book.rating">
+    </td>
+  </tr>
+  </tbody>
+</table>
