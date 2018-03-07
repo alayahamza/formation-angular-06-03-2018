@@ -88,7 +88,11 @@
         <input type="text"
                name="country"
                [(ngModel)]="data.shipping.country"
+               #countryModel="ngModel"
                required>
+        <span class="error" *ngIf="countryModel.invalid && (countryModel.touched  || formInfo.submitted)">Error :
+          <span *ngIf="countryModel.hasError('required')">ce champ est obligatoire.</span>
+        </span>
       </label>
     </p>
   </fieldset>
