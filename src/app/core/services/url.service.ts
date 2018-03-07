@@ -13,6 +13,14 @@ export class UrlService {
   }
 
   cartContent() {
-    return ['cart/content'];
+    return ['/cart/content'];
+  }
+
+  cartOrder() {
+    return ['/cart/order'];
+  }
+
+  cartReactive() {
+    return ['/cart/reactive'];
   }
 }

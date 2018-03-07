@@ -1,9 +1,9 @@
 <nav>
-  <p>
     <a [routerLink]="url.catalogList()"
        routerLinkActive="active-link">Catalogue</a>
-    <a [routerLink]="url.cartContent"
-       routerLinkActive="active-link">Panier</a>
-  </p>
 
+    <a [routerLink]="url.cartContent()"
+       routerLinkActive="active-link">Panier</a>
+  <a [routerLink]="url.cartOrder()"
+       routerLinkActive="active-link">Commande</a>
 </nav>

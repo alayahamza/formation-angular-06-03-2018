@@ -11,8 +11,7 @@ export class BookNavigatorComponent implements OnInit {
 
   @Input() position: BookPosition;
 
-  constructor(public url: UrlService) {
-  }
+  constructor(public url: UrlService) { }
 
   ngOnInit() {
   }

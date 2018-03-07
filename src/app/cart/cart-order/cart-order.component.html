@@ -1,0 +1,99 @@
+<div class="debug">
+  <pre>{{data | json}}</pre>
+  <p>
+    <button (click)="log()">log</button>
+  </p>
+</div>
+<form #formInfo="ngForm"
+      [class.submitted]="formInfo.submitted"
+      (ngSubmit)="formInfo.valid && save()">
+  <fieldset>
+    <legend>Identité</legend>
+    <p>
+      <label>Prénom
+        <input type="text"
+               name="firstName"
+               [(ngModel)]="data.identity.firstname"
+        >
+      </label>
+    </p>
+    <p>
+      <label>Nom*
+        <input type="text"
+               name="lastName"
+               [(ngModel)]="data.identity.lastname"
+               required
+               minlength="2"
+               #lastNameModel="ngModel">
+        <span class="error" *ngIf="lastNameModel.invalid && (lastNameModel.touched || formInfo.submitted)">Error :
+          <span *ngIf="lastNameModel.hasError('required')">ce champ est obligatoire.</span>
+          <span *ngIf="lastNameModel.hasError('minlength')">il faut au moins 2 lettres.</span>
+        </span>
+      </label>
+    </p>
+    <p>
+      <label>Email
+        <input type="email"
+               name="email"
+               [(ngModel)]="data.identity.email">
+      </label>
+    </p>
+    <p>
+      <label>Téléphone
+        <input type="tel"
+               name="phone"
+               [(ngModel)]="data.identity.phone">
+      </label>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Adresse de livraison</legend>
+    <p>
+      <label>Numéro et rue
+        <input type="text"
+               name="street"
+               [(ngModel)]="data.shipping.street">
+      </label>
+    </p>
+    <p>
+      <label>Code postal*
+        <input type="text"
+               name="zipcode"
+               [(ngModel)]="data.shipping.zipcode"
+               required
+               pattern="[0-9]{4,5}"
+               #zipcodemodel="ngModel">
+        <span class="error" *ngIf="zipcodemodel.invalid && (lastNameModel.touched  || formInfo.submitted)">Error :
+          <span *ngIf="zipcodemodel.hasError('required')">ce champ est obligatoire.</span>
+          <span
+            *ngIf="zipcodemodel.hasError('pattern')">Le code postal doit avoir 4 ou 5 chiffres suivant le pays</span>
+        </span>
+      </label>
+    </p>
+    <p>
+      <label>Ville*
+        <input type="text"
+               name="city"
+               [(ngModel)]="data.shipping.city"
+               required
+               #cityModel="ngModel">
+        <span class="error" *ngIf="cityModel.invalid && (cityModel.touched  || formInfo.submitted)">Error :
+          <span *ngIf="cityModel.hasError('required')">ce champ est obligatoire.</span>
+        </span>
+      </label>
+    </p>
+    <p>
+      <label>Pays*
+        <input type="text"
+               name="country"
+               [(ngModel)]="data.shipping.country"
+               required>
+      </label>
+    </p>
+  </fieldset>
+
+  <p>
+    <button type="submit" [disabled]="formInfo.invalid && formInfo.submitted">Envoyer</button>
+  </p>
+</form>

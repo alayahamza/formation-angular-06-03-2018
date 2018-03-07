@@ -1,0 +1,11 @@
+
+<ng-container *ngIf="cart.isEmpty()">
+  <img src="assets/img/cart-empty.png">
+  <span>vide</span>
+</ng-container>
+
+<ng-container *ngIf="!cart.isEmpty()">
+  <img src="assets/img/cart-loaded.png">
+  <span>{{cart.count()}} art.</span>
+  <span>{{cart.total() |currency:'EUR'}}</span>
+</ng-container>

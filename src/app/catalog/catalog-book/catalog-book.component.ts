@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Book} from '../../core/model/book';
-import {Observable} from 'rxjs/Observable';
 import {CatalogService} from '../../core/services/catalog.service';
 import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 import {Title} from '@angular/platform-browser';
 import {BookPosition} from '../../core/model/book-position';
 
@@ -21,10 +20,10 @@ export class CatalogBookComponent implements OnInit {
               private title: Title) { }
 
   ngOnInit() {
-    this.bookPosition$ = this.route.params
+    this.bookPosition$ = this.route.paramMap
       .pipe(
-        switchMap(params => this.catalog.getBook(params.id)),
-        tap(bookPos => this.title.setTitle('Livre' + bookPos.book.title))
+        switchMap(params => this.catalog.getBook(params.get('id'))),
+        tap(bookPos => this.title.setTitle('Livre: ' + bookPos.book.title))
       );
   }
 

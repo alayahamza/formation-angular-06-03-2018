@@ -10,7 +10,7 @@ const routes: Routes = [
     component: CatalogRootComponent,
     children: [
       {path: 'list', component: CatalogListComponent},
-      {path: 'book/:id', component: CatalogBookComponent}
+      {path: 'book/:id', component: CatalogBookComponent},
     ]
   }
 ];
@@ -23,6 +23,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class CatalogRoutingModule {
-
-}
+export class CatalogRoutingModule { }
