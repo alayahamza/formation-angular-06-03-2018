@@ -10,6 +10,10 @@ import { BookNavigatorComponent } from './book-navigator/book-navigator.componen
 import { SmallCartComponent } from './small-cart/small-cart.component';
 import { BuyButtonComponent } from './buy-button/buy-button.component';
 import { OrderButtonComponent } from './order-button/order-button.component';
+import { ErrorComponent } from './error/error.component';
+import { FieldComponent } from './field/field.component';
+import { ZipcodeValidatorDirective } from './zipcode-validator.directive';
+import { EmailValidatorDirective } from './email-validator.directive';
 
 @NgModule({
   imports: [
@@ -25,7 +29,11 @@ import { OrderButtonComponent } from './order-button/order-button.component';
     BookNavigatorComponent,
     SmallCartComponent,
     BuyButtonComponent,
-    OrderButtonComponent
+    OrderButtonComponent,
+    ErrorComponent,
+    FieldComponent,
+    ZipcodeValidatorDirective,
+    EmailValidatorDirective
   ],
   exports: [
     LoadingComponent,
@@ -35,7 +43,11 @@ import { OrderButtonComponent } from './order-button/order-button.component';
     BookNavigatorComponent,
     SmallCartComponent,
     BuyButtonComponent,
-    OrderButtonComponent
+    OrderButtonComponent,
+    ErrorComponent,
+    FieldComponent,
+    ZipcodeValidatorDirective,
+    EmailValidatorDirective
   ]
 })
 export class WidgetsModule { }

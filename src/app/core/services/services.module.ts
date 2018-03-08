@@ -5,6 +5,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { UrlService } from './url.service';
 import { CartService } from './cart.service';
 import { ActionService } from './action.service';
+import { CountryService } from './country.service';
+import { GuardService } from '../../guard.service';
 
 @NgModule({
   imports: [
@@ -15,6 +17,8 @@ import { ActionService } from './action.service';
     UrlService,
     CartService,
     ActionService,
+    CountryService,
+    GuardService,
   ]
 })
 export class ServicesModule { }
