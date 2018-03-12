@@ -21,7 +21,6 @@ export class CatalogService {
         ngZone.run(() => {
           this.load();
         });
-        this.load();
       }, 10 * 1000);
     });
   }

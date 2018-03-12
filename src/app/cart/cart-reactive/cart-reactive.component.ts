@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AppValidators} from '../../core/util/app-validators';
 
 @Component({
@@ -9,97 +9,12 @@ import {AppValidators} from '../../core/util/app-validators';
 })
 export class CartReactiveComponent implements OnInit {
 
+  submitted = false;
+
   form: FormGroup;
   identity: FormGroup;
   shipping: FormGroup;
   billing: FormGroup;
-  submitted = false;
-
-  initialData: any;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-
-    this.identity = new FormGroup(
-      {
-        firstname: new FormControl(),
-        lastname: new FormControl('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(2)
-          ]
-        }),
-        email: new FormControl('', {
-          validators: [
-            AppValidators.email('gmail.com')
-          ]
-        }),
-        phone: new FormControl()
-      }
-    );
-
-
-    this.shipping = this.buildAddressGroup();
-    this.billing = this.buildAddressGroup();
-
-
-    this.form = new FormGroup({
-      identity: this.identity,
-      shipping: this.shipping,
-      billing: this.billing,
-      hasBillingAddress: new FormControl(false)
-    });
-
-    // To initiate form with data from backend for example
-    this.form.setValue({
-
-      'identity': {
-        'firstname': 'Hamza',
-        'lastname': 'ALAYA',
-        'email': 'alaya.hamza@gmail.com',
-        'phone': '123456789'
-      },
-      'shipping': {
-        'street': 'fghjk',
-        'zipcode': '12378',
-        'city': 'fghj',
-        'country': 'fghj'
-      },
-      'billing': {
-        'street': null,
-        'zipcode': null,
-        'city': null,
-        'country': null
-      },
-      'hasBillingAddress': false
-    });
-  }
-
-  buildAddressGroup() {
-    return new FormGroup(
-      {
-        street: new FormControl(),
-        zipcode: new FormControl('', {
-          validators: [
-            Validators.required,
-            AppValidators.zipcode
-          ]
-        }),
-        city: new FormControl('', {
-          validators: [
-            Validators.required
-          ]
-        }),
-        country: new FormControl('', {
-          validators: [
-            Validators.required
-          ]
-        })
-      }
-    );
-  }
 
   onSubmit() {
     this.submitted = true;
@@ -107,20 +22,16 @@ export class CartReactiveComponent implements OnInit {
       this.save();
     }
   }
-
   private save() {
     console.log(this.form.value);
   }
-
   isDisabled() {
     return this.form.invalid && this.submitted;
   }
-
   hasBillingAddress() {
     return this.form.value.hasBillingAddress;
   }
-
-  toogleBillingAddress() {
+  toggleBillingAddress() {
     if (this.hasBillingAddress()) {
       this.billing = this.buildAddressGroup();
       this.form.addControl('billing', this.billing);
@@ -128,4 +39,57 @@ export class CartReactiveComponent implements OnInit {
       this.form.removeControl('billing');
     }
   }
+
+  constructor(private fb: FormBuilder) { }
+  ngOnInit() {
+    this.identity = this.fb.group({
+      firstname: '',
+      lastname: ['', {
+        validators: [
+          Validators.required,
+          Validators.minLength(2)
+        ]
+      }],
+      email: ['', {
+        validators: [
+          AppValidators.email('gmail.com')
+        ]
+      }],
+      phone: '',
+    });
+    this.shipping = this.buildAddressGroup();
+    this.form = this.fb.group({
+      identity: this.identity,
+      shipping: this.shipping,
+      hasBillingAddress: false
+    });
+
+    this.form.patchValue({
+      identity: {
+        firstname: 'Thierry',
+        lastname: 'Chatel',
+      },
+      shipping: {
+        city: 'Lunel',
+      },
+    });
+  }
+  private buildAddressGroup() {
+    return this.fb.group({
+      street: '',
+      zipcode: ['', {
+        validators: [
+          Validators.required,
+          AppValidators.zipcode
+        ],
+      }],
+      city: ['', {
+        validators: [
+          Validators.required,
+        ]
+      }],
+      country: '',
+    });
+  }
+
 }

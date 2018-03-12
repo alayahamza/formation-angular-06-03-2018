@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {CartRow} from '../model/cart-row';
 import {Book} from '../model/book';
 import {ReduceUtil} from '../util/reduce-util';
@@ -20,7 +20,6 @@ export class CartService {
   private save() {
     localStorage.setItem(storageKey, JSON.stringify(this._rows));
   }
-
   private load() {
     const json = localStorage.getItem(storageKey);
     if (json) {
@@ -29,7 +28,7 @@ export class CartService {
     }
   }
 
-  private findRow(rowOrBook: CartRow | Book): { row: CartRow, index: number } {
+  private findRow(rowOrBook: CartRow | Book): {row: CartRow, index: number} {
     const book: Book = rowOrBook instanceof CartRow ? rowOrBook.book : rowOrBook;
     const id = book._id.$oid;
     let row, index;
@@ -51,7 +50,6 @@ export class CartService {
       this.save();
     }
   }
-
   remove(row: CartRow) {
     const {row: found} = this.findRow(row);
     row.deleted = true;
@@ -59,9 +57,7 @@ export class CartService {
       this._rows = this._rows.filter(r => r !== found);
       this.save();
     }, 450);
-
   }
-
   updateQuantity(row, newQantity) {
     const {row: found, index} = this.findRow(row);
     if (found) {
@@ -73,13 +69,11 @@ export class CartService {
   isEmpty() {
     return this._rows.length === 0;
   }
-
   count() {
     return this._rows
       .map(row => row.quantity)
       .reduce(ReduceUtil.total, 0);
   }
-
   total() {
     return this._rows
       .map(row => row.amount())

@@ -1,11 +1,13 @@
 <nav>
-  <a [routerLink]="url.catalogList()"
-     routerLinkActive="active-link">Catalogue</a>
+    <a [routerLink]="url.catalogList()"
+       routerLinkActive="active-link">Catalogue</a>
 
   <a [routerLink]="url.cartContent()"
      routerLinkActive="active-link">Panier</a>
+
   <a [routerLink]="url.cartOrder()"
      routerLinkActive="active-link">Commande</a>
+
   <a [routerLink]="url.cartReactive()"
      routerLinkActive="active-link">Commande (Reactive Form)</a>
 </nav>

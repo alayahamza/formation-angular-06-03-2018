@@ -1,3 +1,4 @@
+import { browser, By, element } from 'protractor';
 import {AbstractListPage} from './abstract-list.po';
 
 export class CatalogPage extends AbstractListPage {
@@ -7,8 +8,8 @@ export class CatalogPage extends AbstractListPage {
   }
 
   buyBookOnRow(rowIndex: number) {
-    const button = this.getOnRow(rowIndex, '.catalog-button app-buy-button');
+    const button = this.getOnRow(rowIndex,
+      '.catalog-button app-buy-button button');
     button.click();
   }
-
 }

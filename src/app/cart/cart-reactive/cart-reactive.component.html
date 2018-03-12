@@ -1,17 +1,16 @@
 <div class="debug">
-  <pre>
-    {{form.value|json}}
-  </pre>
+  <pre>{{form.value |json}}</pre>
 </div>
-<form [class.submitted]="submitted"
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()">
+
+<form [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      [class.submitted]="submitted">
   <fieldset formGroupName="identity">
     <legend>Identité</legend>
     <app-field label="Prénom">
       <input type="text" formControlName="firstname">
     </app-field>
-    <app-field label="Nom*">
+    <app-field label="Nom">
       <input type="text" formControlName="lastname">
     </app-field>
     <app-field label="Email">
@@ -21,53 +20,49 @@
       <input type="tel" formControlName="phone">
     </app-field>
   </fieldset>
-
   <fieldset formGroupName="shipping">
     <legend>Adresse de livraison</legend>
     <app-field label="Numéro et rue">
       <input type="text" formControlName="street">
     </app-field>
-    <app-field label="Code postal*">
+    <app-field label="Code postal">
       <input type="text" formControlName="zipcode">
     </app-field>
-    <app-field label="Ville*">
+    <app-field label="Ville">
       <input type="text" formControlName="city">
     </app-field>
     <app-field label="Pays">
       <input type="text" formControlName="country">
     </app-field>
   </fieldset>
-
-
   <p>
     <label>
       <input type="checkbox"
              formControlName="hasBillingAddress"
-             (change)="toogleBillingAddress()">
-      Adresse de facturation différente
+             (change)="toggleBillingAddress()">
+      adresse de facturation différente
     </label>
   </p>
-  <fieldset formGroupName="billing" *ngIf="hasBillingAddress()">
-    <legend>
-      Adresse de facturation
-    </legend>
+  <fieldset formGroupName="billing"
+            *ngIf="hasBillingAddress()">
+    <legend>Adresse de facturation</legend>
     <app-field label="Numéro et rue">
       <input type="text" formControlName="street">
     </app-field>
-    <app-field label="Code postal*">
+    <app-field label="Code postal">
       <input type="text" formControlName="zipcode">
     </app-field>
-    <app-field label="Ville*">
+    <app-field label="Ville">
       <input type="text" formControlName="city">
     </app-field>
-    <app-field label="Pays*">
+    <app-field label="Pays">
       <input type="text" formControlName="country">
     </app-field>
   </fieldset>
-
   <p>
     <button type="submit"
-            [disabled]="isDisabled()">Envoyer
-    </button>
+            [disabled]="isDisabled()">Envoyer</button>
   </p>
 </form>
+
+

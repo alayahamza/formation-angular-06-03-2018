@@ -11,8 +11,7 @@ export class ErrorComponent implements OnInit {
   @Input() control: NgControl;
   @Input() form: NgForm | FormGroupDirective;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }

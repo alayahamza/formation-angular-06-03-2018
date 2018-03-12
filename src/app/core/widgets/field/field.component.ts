@@ -1,4 +1,4 @@
-import {Component, ContentChild, Input, OnInit, Optional} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, Optional, ViewChild} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm, NgModel} from '@angular/forms';
 
 @Component({
@@ -10,17 +10,14 @@ export class FieldComponent implements OnInit {
 
   @Input() label: string;
 
-  @ContentChild(NgControl) control: NgModel;
+  @ContentChild(NgControl) control: NgControl;
 
   get form() {
     return this.ngForm || this.formGroupDir;
   }
 
-  // gonna look for NgForm in dependency graph
-  // Optional : to avoid ecxeptions if ng form was found
   constructor(@Optional() public ngForm: NgForm,
-              @Optional() public formGroupDir: FormGroupDirective) {
-  }
+              @Optional() public formGroupDir: FormGroupDirective) { }
 
   ngOnInit() {
   }

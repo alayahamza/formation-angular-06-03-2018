@@ -6,7 +6,7 @@ import { UrlService } from './url.service';
 import { CartService } from './cart.service';
 import { ActionService } from './action.service';
 import { CountryService } from './country.service';
-import { GuardService } from '../../guard.service';
+import { NonEmptyCartGuard } from './non-empty-cart.guard';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { GuardService } from '../../guard.service';
     CartService,
     ActionService,
     CountryService,
-    GuardService,
+    NonEmptyCartGuard,
   ]
 })
 export class ServicesModule { }

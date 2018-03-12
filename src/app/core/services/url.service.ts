@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Book} from '../model/book';
 
 @Injectable()
@@ -23,4 +23,5 @@ export class UrlService {
   cartReactive() {
     return ['/cart/reactive'];
   }
+
 }

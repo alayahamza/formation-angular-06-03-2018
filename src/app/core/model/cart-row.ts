@@ -3,11 +3,11 @@ import {Book} from './book';
 export class CartRow {
 
   deleted = false;
+  added = true;
 
   get book(): Book {
     return this._book;
   }
-
   get quantity(): number {
     return this._quantity;
   }
@@ -18,6 +18,9 @@ export class CartRow {
 
   constructor(private _book: Book,
               private _quantity: number) {
+    setTimeout(() => {
+      this.added = false;
+    }, 500);
   }
 
   amount() {

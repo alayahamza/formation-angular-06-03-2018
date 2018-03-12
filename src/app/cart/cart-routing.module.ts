@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import {CartRootComponent} from './cart-root/cart-root.component';
 import {CartContentComponent} from './cart-content/cart-content.component';
 import {CartOrderComponent} from './cart-order/cart-order.component';
 import {CartReactiveComponent} from './cart-reactive/cart-reactive.component';
-import {GuardService} from '../guard.service';
+import {NonEmptyCartGuard} from '../core/services/non-empty-cart.guard';
 
 const routes: Routes = [
   {
@@ -12,14 +12,9 @@ const routes: Routes = [
     component: CartRootComponent,
     children: [
       {path: 'content', component: CartContentComponent},
-      {
-        path: 'order', component: CartOrderComponent,
-        canActivate: [GuardService]
-      },
-      {
-        path: 'reactive', component: CartReactiveComponent,
-        canActivate: [GuardService]
-      },
+      {path: 'order', component: CartOrderComponent,
+       canActivate: [NonEmptyCartGuard]},
+      {path: 'reactive', component: CartReactiveComponent},
     ]
   }
 ];
@@ -28,5 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CartRoutingModule {
-}
+export class CartRoutingModule { }

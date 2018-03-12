@@ -1,3 +1,4 @@
+
 <ng-container *ngIf="cart.isEmpty()">
   <img src="assets/img/cart-empty.png">
   <span>vide</span>
@@ -5,7 +6,6 @@
 
 <ng-container *ngIf="!cart.isEmpty()">
   <img src="assets/img/cart-loaded.png">
-
   <span class="cart-count">{{cart.count()}} art.</span>
-  <span class="cart-total">{{cart.total() | currency: 'EUR'}}</span>
+  <span class="cart-total">{{cart.total() |currency:'EUR'}}</span>
 </ng-container>

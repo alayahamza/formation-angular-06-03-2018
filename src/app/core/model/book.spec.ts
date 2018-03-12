@@ -2,27 +2,27 @@ import {Book} from './book';
 
 export const mockBook1: Book = {
   _id: {
-    $oid: 'JETOJEHOF',
+    $oid: 'JET5S34RF',
   },
-  title: 'skfug',
-  author: 'qdgrz,',
+  title: 'Abcd',
+  author: 'Efgh',
+  price: 10.10
+};
+export const mockBook1bis: Book = {
+  _id: {
+    $oid: 'JET5S34RF',
+  },
+  title: 'Abcd',
+  author: 'Efgh',
   price: 10.10
 };
 
 export const mockBook2: Book = {
   _id: {
-    $oid: 'sherthe',
+    $oid: 'J348RDT36',
   },
-  title: 'strrthe',
-  author: 'srgtrhrtrth',
+  title: 'Ijkl',
+  author: 'Mnop',
   price: 5.00
 };
 
-export const mockBook1bis: Book = {
-  _id: {
-    $oid: 'sherthe',
-  },
-  title: 'strrthe',
-  author: 'srgtrhrtrth',
-  price: 5.00
-};

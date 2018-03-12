@@ -15,10 +15,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     WidgetsModule,
     CatalogModule,
     ServicesModule,
-    BrowserAnimationsModule,
     // Routing module à la fin :
     AppRoutingModule,
   ],
@@ -28,6 +28,5 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   bootstrap: [AppComponent],
   exports: []
 })
-export class AppModule {
-}
+export class AppModule { }
 

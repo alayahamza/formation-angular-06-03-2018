@@ -1,4 +1,4 @@
-import {Directive} from '@angular/core';
+import { Directive } from '@angular/core';
 import {NG_VALIDATORS} from '@angular/forms';
 import {AppValidators} from '../util/app-validators';
 
@@ -10,11 +10,7 @@ import {AppValidators} from '../util/app-validators';
       useValue: AppValidators.zipcode,
       multi: true
     }
-  ],
+  ]
 })
 export class ZipcodeValidatorDirective {
-
-  constructor() {
-  }
-
 }

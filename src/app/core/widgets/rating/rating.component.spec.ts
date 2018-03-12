@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {RatingComponent} from './rating.component';
+import { RatingComponent } from './rating.component';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
@@ -10,18 +10,16 @@ import {By} from '@angular/platform-browser';
 class ParentComponent {
   rating = 0;
 }
-
 fdescribe('RatingComponent', () => {
   let parentComponent: ParentComponent;
   let parentFixture: ComponentFixture<ParentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RatingComponent, ParentComponent]
+      declarations: [ RatingComponent, ParentComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
-
   beforeEach(() => {
     parentFixture = TestBed.createComponent(ParentComponent);
     parentComponent = parentFixture.componentInstance;
@@ -31,11 +29,9 @@ fdescribe('RatingComponent', () => {
   it('should display ★★★☆☆', () => {
     parentComponent.rating = 3;
     parentFixture.detectChanges();
-    const starts = parentFixture.debugElement
-      .nativeElement
-      .textContent
-      .replace(/[^★,☆]/g, '');
-    expect(starts).toEqual('★★★☆☆');
+    const stars = parentFixture.debugElement.nativeElement.textContent
+      .replace(/[^★☆]/g, '');
+    expect(stars).toEqual('★★★☆☆');
   });
 
   it('should change rating', () => {

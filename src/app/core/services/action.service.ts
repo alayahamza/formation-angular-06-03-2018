@@ -9,8 +9,7 @@ export class ActionService {
 
   constructor(private cart: CartService,
               private router: Router,
-              private url: UrlService) {
-  }
+              private url: UrlService) { }
 
   buyBook(book: Book) {
     this.cart.add(book);
@@ -20,4 +19,5 @@ export class ActionService {
   orderCart() {
     this.router.navigate(this.url.cartOrder());
   }
+
 }
