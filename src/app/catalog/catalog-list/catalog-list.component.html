@@ -10,19 +10,19 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let book of catalog$ |async">
-    <td>
+  <tr *ngFor="let book of catalog$ |async" class="catalog-row">
+    <td class="catalog-image">
       <a [routerLink]="url.catalogBook(book)">
         <img [src]="book.image">
       </a>
     </td>
-    <td>{{book.title}}</td>
-    <td>{{book.author}}</td>
-    <td class="right">{{book.price |currency:'EUR'}}</td>
-    <td>
+    <td class="catalog-title">{{book.title}}</td>
+    <td class="catalog-author">{{book.author}}</td>
+    <td class="catalog-price right">{{book.price |currency:'EUR'}}</td>
+    <td class="catalog-rating">
       <app-rating [(value)]="book.rating"></app-rating>
     </td>
-    <td>
+    <td class="catalog-button">
       <app-buy-button [book]="book"></app-buy-button>
     </td>
   </tr>

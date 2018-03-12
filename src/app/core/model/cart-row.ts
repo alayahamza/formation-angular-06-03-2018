@@ -2,9 +2,12 @@ import {Book} from './book';
 
 export class CartRow {
 
+  deleted = false;
+
   get book(): Book {
     return this._book;
   }
+
   get quantity(): number {
     return this._quantity;
   }

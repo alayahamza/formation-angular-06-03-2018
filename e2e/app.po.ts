@@ -1,11 +1,16 @@
-import { browser, by, element } from 'protractor';
+import {browser, By, element} from 'protractor';
 
 export class AppPage {
-  navigateTo() {
+  loadApplication() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  // return a promise of string (waits until angular finishes loading page)
+  getTitleText() {
+    return element(By.css('app-root h1')).getText();
+  }
+
+  clickOnMenuLink(linkText: string) {
+    element(By.linkText(linkText)).click();
   }
 }

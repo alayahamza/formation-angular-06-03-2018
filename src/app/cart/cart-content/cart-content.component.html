@@ -15,20 +15,21 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of cart.rows; trackBy: trackRow">
-    <td>
+  <tr *ngFor="let row of cart.rows; trackBy: trackRow" class="cart-row"
+      [@cartRow]="row.deleted ? 'out' : 'in' ">
+    <td class="cart-image">
       <a [routerLink]="url.catalogBook(row.book)">
         <img [src]="row.book.image">
       </a>
     </td>
-    <td>{{row.book.title}}</td>
-    <td>{{row.book.author}}</td>
-    <td class="right">{{row.book.price |currency:'EUR'}}</td>
-    <td><input type="number"
-               [ngModel]="row.quantity"
-               (ngModelChange)="cart.updateQuantity(row, $event)"></td>
-    <td class="right">{{row.amount() |currency:'EUR'}}</td>
-    <td>
+    <td class="cart-title">{{row.book.title}}</td>
+    <td class="cart-author">{{row.book.author}}</td>
+    <td class="cart-price right">{{row.book.price |currency:'EUR'}}</td>
+    <td class="cart-quantity"><input type="number"
+                                     [ngModel]="row.quantity"
+                                     (ngModelChange)="cart.updateQuantity(row, $event)"></td>
+    <td class="cart-amount right">{{row.amount() |currency:'EUR'}}</td>
+    <td class="cart-button">
       <button (click)="cart.remove(row)">
         <img src="assets/img/cart-remove.png">
       </button>

@@ -5,8 +5,8 @@ import {BookPosition} from '../model/book-position';
 import {Observable} from 'rxjs/Observable';
 import {map, shareReplay} from 'rxjs/operators';
 
-const url = 'https://api.mongolab.com/api/1/databases/sfbooks/collections/sfbooks/';
-const apiKey = '?apiKey=d3qvB8ldYFW2KSynHRediqLuBLP8JA8i';
+export const url = 'https://api.mongolab.com/api/1/databases/sfbooks/collections/sfbooks/';
+export const apiKey = '?apiKey=d3qvB8ldYFW2KSynHRediqLuBLP8JA8i';
 
 @Injectable()
 export class CatalogService {

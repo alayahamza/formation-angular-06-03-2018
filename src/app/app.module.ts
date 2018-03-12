@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {WidgetsModule} from './core/widgets/widgets.module';
 import {CartModule} from './cart/cart.module';
 import {Book} from './core/model/book';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {Book} from './core/model/book';
     WidgetsModule,
     CatalogModule,
     ServicesModule,
+    BrowserAnimationsModule,
     // Routing module à la fin :
     AppRoutingModule,
   ],
@@ -26,5 +28,6 @@ import {Book} from './core/model/book';
   bootstrap: [AppComponent],
   exports: []
 })
-export class AppModule { }
+export class AppModule {
+}
 

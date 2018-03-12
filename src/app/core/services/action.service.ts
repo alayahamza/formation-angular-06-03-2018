@@ -9,14 +9,15 @@ export class ActionService {
 
   constructor(private cart: CartService,
               private router: Router,
-              private url: UrlService) { }
+              private url: UrlService) {
+  }
 
   buyBook(book: Book) {
     this.cart.add(book);
     this.router.navigate(this.url.cartContent());
   }
 
-  orderCart(){
+  orderCart() {
     this.router.navigate(this.url.cartOrder());
   }
 }
